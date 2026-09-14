@@ -21,3 +21,10 @@ supported frameworks:
 packages:
   - Bi400: [runtime, vcl]
   - dclBi400: [design, vcl]
+
+# PMI.BI400.Comms.ICS is deliberately not in the Bi400 package (it pulls in ICS and
+# CodeSite), so consumers compile it from source. Register Source\core on the library
+# path, as README.md step 3 recommends, so "uses PMI.BI400.Comms.ICS" keeps working.
+paths:
+  extra library paths:
+    - Source\core
