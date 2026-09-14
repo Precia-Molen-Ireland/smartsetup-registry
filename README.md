@@ -29,3 +29,4 @@ Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not t
 | `gdk.markdown4d` | https://github.com/GDKsoftware/Markdown4D | upstream has no tmsbuild.yaml, so the copy here is used |
 | `pmi.bi400` | https://github.com/Precia-Molen-Ireland/bi400-comms | private repo, needs org access; tmsbuild.yaml also lives in the repo |
 | `pmi.common` | https://github.com/Precia-Molen-Ireland/misc | private repo; source-only units plus the jsonadapt package |
+| `pmi.kastri` | https://github.com/DelphiWorlds/Kastri | upstream Kastri, unmodified; community definition plus library paths for Core, FeaturesConnectivity, API, Include |

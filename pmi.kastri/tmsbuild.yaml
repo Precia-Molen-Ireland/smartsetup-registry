@@ -1,0 +1,54 @@
+# TMS Smart Setup definition for Kastri (https://github.com/DelphiWorlds/Kastri).
+# Kastri is cloned from upstream, unmodified. This is the community "delphiworlds.kastri"
+# definition plus an "extra library paths" block, so the folders our projects consume as
+# source are registered on the library path and projects need no Kastri paths of their own.
+# Kastri has no tmsbuild.yaml upstream, so this copy is what Smart Setup uses.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.kastri
+  name: Kastri
+  description: Kastri cross-platform library from Delphi Worlds (upstream, unmodified)
+  url: https://github.com/DelphiWorlds/Kastri
+  vcs protocol: git
+  docs: https://github.com/DelphiWorlds/Kastri
+
+supported frameworks:
+  fmx:
+    ide since: delphi12
+    platforms:
+      - win32intel
+      - win64intel
+      - macos64intel
+      - macos64arm
+      - iosdevice64
+      - iossimulator64arm
+      - android32
+      - android64
+    c++ builder support: true
+
+packages:
+  - KastriFMX: [runtime, fmx]
+  - KastriAdMob: [runtime, fmx]
+  - KastriBuild: [runtime, fmx]
+
+package options:
+  ignore dproj platforms: true
+  root package folder: .
+  add libsuffix: true
+  package folders:
+    delphi11+: packages
+
+paths:
+  search paths to preserve:
+    - *fmxlinux*
+  build-only library paths:
+    - API
+    - Controls
+  # Folders GenMobile uses as source: DW.OSDevice, DW.OSPower, DW.MobileDeviceInfo,
+  # DW.Permissions.Helpers, DW.Classes.Helpers, DW.Consts.Android, DW.Connectivity.
+  extra library paths:
+    - Core
+    - Features\Connectivity
+    - API
+    - Include
