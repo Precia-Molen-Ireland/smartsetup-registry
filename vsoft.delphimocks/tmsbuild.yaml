@@ -1,5 +1,7 @@
 # TMS Smart Setup definition for Delphi-Mocks (https://github.com/VSoftTechnologies/Delphi-Mocks).
-# Upstream, unmodified. Same layout as VSoft's other libraries on the community server.
+# Upstream, unmodified. The vendor dproj lists Delphi.Mocks.inc as a DCCReference, which
+# Smart Setup rejects ("Unsupported DCC reference file type"), so the package is generated
+# from the Source folder instead of using the vendor package.
 minimum required tmsbuild version: 2.0
 
 application:
@@ -11,17 +13,26 @@ application:
   docs: https://github.com/VSoftTechnologies/Delphi-Mocks
 
 supported frameworks:
-  vcl:
+  rtl:
     ide since: delphi11
     platforms:
       - win32intel
       - win64intel
 
 packages:
-  - VSoft.DelphiMocksR: [runtime, vcl]
+  - DelphiMocks: [runtime, rtl]
 
-package options:
-  package folders:
-    delphi11: RAD Studio 11.0
-    delphi12: RAD Studio 12.0
-    delphi13: RAD Studio 13.0
+package definitions:
+  DelphiMocks:
+    framework type: NONE
+    description: Delphi-Mocks mocking framework
+    requires: rtl
+    files:
+      - source:
+          folder: Source
+          include file mask: '*.pas'
+
+paths:
+  # Delphi.Mocks.inc is included by the units and lives next to them.
+  build-only library paths:
+    - Source
