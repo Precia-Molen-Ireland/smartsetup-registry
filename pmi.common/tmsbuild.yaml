@@ -15,12 +15,21 @@ application:
   vcs protocol: git
   docs: https://github.com/Precia-Molen-Ireland/misc
 
+# The units are used by GenMobile on every platform it targets, so the library
+# path is registered for all of them. jsonadapt is RTL/dbrtl only and builds anywhere.
 supported frameworks:
   rtl:
     ide since: delphi11
     platforms:
       - win32intel
       - win64intel
+      - win64xintel
+      - macos64arm
+      - iosdevice64
+      - iossimulator64arm
+      - android64
+    # Smart Setup only builds win64xintel when this is true.
+    c++ builder support: true
 
 packages:
   - jsonadapt: [runtime, rtl]
@@ -28,6 +37,8 @@ packages:
 package options:
   # jsonadapt.dpk has no {$LIBSUFFIX}; Smart Setup adds one at build time.
   add libsuffix: true
+  # jsonadapt.dproj only lists Win32; build it for every platform above anyway.
+  ignore dproj platforms: true
 
 paths:
   # Everything else is consumed as source, exactly as the manual install did with
