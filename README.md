@@ -1,0 +1,28 @@
+# Precia Molen Ireland Smart Setup registry
+
+Product catalogue for [TMS Smart Setup](https://doc.tmssoftware.com/smartsetup/).
+One folder per product, each holding a `tmsbuild.yaml` that tells Smart Setup
+where the product's git repository is and how to build it. No source code lives here.
+
+Smart Setup cannot fetch a zip from a private GitHub repo, so each developer
+machine keeps a clone of this repo and Smart Setup reads a zip built from that
+clone (`GenMobileMultiTenancy\Build.ps1` does the clone, pull, zip and
+`tms server-add pmi zipfile file://...` steps automatically).
+
+## Manual setup
+
+```
+git clone https://github.com/Precia-Molen-Ireland/smartsetup-registry.git C:\Delphi\Comps\smartsetup-registry
+powershell -c "Compress-Archive -Path C:\Delphi\Comps\smartsetup-registry\* -DestinationPath C:\Delphi\Comps\smartsetup-registry.zip -Force"
+cd C:\Delphi\Comps\tms
+tms server-add pmi zipfile file://C:\Delphi\Comps\smartsetup-registry.zip
+tms install gdk.markdown4d
+```
+
+Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not the folder.
+
+## Products
+
+| id | source | notes |
+|---|---|---|
+| `gdk.markdown4d` | https://github.com/GDKsoftware/Markdown4D | upstream has no tmsbuild.yaml, so the copy here is used |

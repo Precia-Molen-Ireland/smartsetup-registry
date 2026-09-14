@@ -1,0 +1,45 @@
+# TMS Smart Setup definition for Markdown4D (https://github.com/GDKsoftware/Markdown4D)
+# The upstream repo has no tmsbuild.yaml, so Smart Setup uses this copy from the registry.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: gdk.markdown4d
+  name: Markdown4D
+  description: CommonMark / GFM markdown parser, HTML renderer and canvas-drawn viewer/editor controls for VCL and FMX
+  url: https://github.com/GDKsoftware/Markdown4D
+  vcs protocol: git
+  docs: https://github.com/GDKsoftware/Markdown4D
+
+supported frameworks:
+  rtl:
+    ide since: delphi12
+    platforms:
+      - win32intel
+      - win64xintel
+    # Smart Setup only builds win64xintel when this is true (see UProjectAnalyzer.pas)
+    c++ builder support: true
+
+  vcl:
+    ide since: delphi12
+    platforms:
+      - win32intel
+      - win64xintel
+    c++ builder support: true
+
+  fmx:
+    ide since: delphi12
+    platforms:
+      - win32intel
+
+packages:
+  - Markdown4D.Core: [runtime, rtl]
+  - Markdown4D.Vcl: [runtime, vcl]
+  - Markdown4D.Vcl.Design: [design, vcl]
+  - Markdown4D.Fmx: [runtime, fmx]
+  - Markdown4D.Fmx.Design: [design, fmx]
+
+package options:
+  # packages live flat in <repo>\packages with {$LIBSUFFIX AUTO}, not in packages\d12, packages\d13
+  package folders:
+    delphi12+: packages
+
