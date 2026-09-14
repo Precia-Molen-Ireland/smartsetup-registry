@@ -30,3 +30,9 @@ package options:
     delphi12: RadStudioAthens
     delphi13: RadStudioFlorence
   add libsuffix: true
+
+paths:
+  # The ap_* units (ap_ModLink and friends) are not in the modlinkr package and are used
+  # from source by GenWS's Bi400Scripter, as the manual install did with Source on the path.
+  extra library paths:
+    - Source
