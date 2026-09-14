@@ -4,23 +4,30 @@ Product catalogue for [TMS Smart Setup](https://doc.tmssoftware.com/smartsetup/)
 One folder per product, each holding a `tmsbuild.yaml` that tells Smart Setup
 where the product's git repository is and how to build it. No source code lives here.
 
-Smart Setup cannot fetch a zip from a private GitHub repo, so each developer
-machine keeps a clone of this repo and Smart Setup reads a zip built from that
-clone (`GenMobileMultiTenancy\Build.ps1` does the clone, pull, zip and
-`tms server-add pmi zipfile file://...` steps automatically).
-
-## Manual setup
+Smart Setup reads this catalogue straight from GitHub's zip of the `main` branch:
 
 ```
-git clone https://github.com/Precia-Molen-Ireland/smartsetup-registry.git C:\Delphi\Comps\smartsetup-registry
-powershell -c "Compress-Archive -Path C:\Delphi\Comps\smartsetup-registry\* -DestinationPath C:\Delphi\Comps\smartsetup-registry.zip -Force"
-cd C:\Delphi\Comps\tms
-tms server-add pmi zipfile file://C:\Delphi\Comps\smartsetup-registry.zip
+https://github.com/Precia-Molen-Ireland/smartsetup-registry/archive/refs/heads/main.zip
+```
+
+That is why the repo is public: it must be fetchable without credentials, the same way the
+TMS community server is. It contains only these `tmsbuild.yaml` files. The product repos it
+points at stay private; Smart Setup clones them with git and your own GitHub login.
+
+## Setup on a machine
+
+`GenMobileMultiTenancy\Build.ps1` registers the server automatically. By hand:
+
+```
+cd C:\Delphi\Comps	ms
+tms server-add pmi zipfile https://github.com/Precia-Molen-Ireland/smartsetup-registry/archive/refs/heads/main.zip
 tms install gdk.markdown4d
 ```
 
-Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not the folder.
-`Update-Registry.ps1` does the pull and re-zip in one go (`-NoPull` to zip local edits only).
+## Changing the catalogue
+
+Edit or add a `<product.id>	msbuild.yaml`, commit, push. Smart Setup notices the new zip on
+its next run through GitHub's ETag; there is nothing to rebuild locally.
 
 ## Products
 
