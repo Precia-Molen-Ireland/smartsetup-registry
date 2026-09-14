@@ -20,6 +20,7 @@ tms install gdk.markdown4d
 ```
 
 Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not the folder.
+`Update-Registry.ps1` does the pull and re-zip in one go (`-NoPull` to zip local edits only).
 
 ## Products
 
