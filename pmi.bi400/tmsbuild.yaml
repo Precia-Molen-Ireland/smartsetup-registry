@@ -1,0 +1,23 @@
+# TMS Smart Setup definition for bi400-comms.
+# Install with:  tms install pmi.bi400   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.bi400
+  name: BI400 Comms
+  description: TBi400Commands VCL component for BI400 / DOT weighing cabinet controllers over TCP/IP
+  url: https://github.com/Precia-Molen-Ireland/bi400-comms.git
+  vcs protocol: git
+  docs: https://github.com/Precia-Molen-Ireland/bi400-comms
+
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+
+# Packages follow the Smart Setup convention: Packages\d11, Packages\d12, Packages\d13,
+# all with {$LIBSUFFIX AUTO}.
+packages:
+  - Bi400: [runtime, vcl]
+  - dclBi400: [design, vcl]
