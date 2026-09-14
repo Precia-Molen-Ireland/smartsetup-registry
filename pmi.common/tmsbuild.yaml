@@ -26,9 +26,7 @@ packages:
   - jsonadapt: [runtime, rtl]
 
 package options:
-  # jsonadapt.dpk lives in the repo root and has no {$LIBSUFFIX}.
-  package folders:
-    delphi11+: .
+  # jsonadapt.dpk has no {$LIBSUFFIX}; Smart Setup adds one at build time.
   add libsuffix: true
 
 paths:
