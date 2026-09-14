@@ -1,0 +1,22 @@
+# TMS Smart Setup definition for the SigPlus ActiveX import.
+# Install with:  tms install pmi.sigplus   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
+# The Topaz SigPlus.ocx must be installed on the machine separately (see README.md).
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.sigplus
+  name: SigPlus ActiveX import
+  description: Delphi type-library import and package for the Topaz SigPlus signature pad ActiveX control
+  url: https://github.com/Precia-Molen-Ireland/sigplus-delphi.git
+  vcs protocol: git
+  docs: https://github.com/Precia-Molen-Ireland/sigplus-delphi
+
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+
+# One package that both registers the controls in the IDE and provides the units.
+packages:
+  - SigPlusPkg: [design, vcl]
