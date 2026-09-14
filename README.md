@@ -32,3 +32,6 @@ Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not t
 | `pmi.kastri` | https://github.com/DelphiWorlds/Kastri | upstream Kastri, unmodified; community definition plus library paths for Core, FeaturesConnectivity, API, Include |
 | `pmi.modlink` | https://github.com/Precia-Molen-Ireland/ModLink2 | private repo; purchased Modbus components |
 | `pmi.propc` | https://github.com/Precia-Molen-Ireland/propc | private repo; OPC kit, design package plus server units from source |
+| `vsoft.delphimocks` | https://github.com/VSoftTechnologies/Delphi-Mocks | upstream, unmodified |
+| `grijjy.foundation` | https://github.com/grijjy/GrijjyFoundation | upstream, unmodified; source on the library path, small generated package |
+| `pleriche.fastmm4` | https://github.com/pleriche/FastMM4 | upstream, unmodified; source on the library path, small generated package |

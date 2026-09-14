@@ -1,0 +1,27 @@
+# TMS Smart Setup definition for Delphi-Mocks (https://github.com/VSoftTechnologies/Delphi-Mocks).
+# Upstream, unmodified. Same layout as VSoft's other libraries on the community server.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: vsoft.delphimocks
+  name: Delphi Mocks
+  description: Delphi-Mocks mocking framework for unit tests (VSoft Technologies)
+  url: https://github.com/VSoftTechnologies/Delphi-Mocks
+  vcs protocol: git
+  docs: https://github.com/VSoftTechnologies/Delphi-Mocks
+
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+
+packages:
+  - VSoft.DelphiMocksR: [runtime, vcl]
+
+package options:
+  package folders:
+    delphi11: RAD Studio 11.0
+    delphi12: RAD Studio 12.0
+    delphi13: RAD Studio 13.0

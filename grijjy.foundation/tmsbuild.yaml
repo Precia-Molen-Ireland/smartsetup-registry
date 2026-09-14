@@ -1,0 +1,37 @@
+# TMS Smart Setup definition for GrijjyFoundation (https://github.com/grijjy/GrijjyFoundation).
+# Upstream, unmodified. The repo is source only, consumed from the library path; Smart
+# Setup needs at least one package, so a small RTL-only one is generated from three units.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: grijjy.foundation
+  name: Grijjy Foundation
+  description: Grijjy Foundation classes (BSON, cloud logging, collections, timer queues, ...)
+  url: https://github.com/grijjy/GrijjyFoundation
+  vcs protocol: git
+  docs: https://github.com/grijjy/GrijjyFoundation
+
+supported frameworks:
+  rtl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+
+packages:
+  - GrijjyFoundation: [runtime, rtl]
+
+package definitions:
+  GrijjyFoundation:
+    framework type: NONE
+    description: Grijjy Foundation core units
+    requires: rtl
+    files:
+      - source:
+          folder: .
+          include file mask: 'Grijjy.SysUtils.pas;Grijjy.Collections.pas;Grijjy.DateUtils.pas'
+
+paths:
+  # Everything else compiles from source, as the manual install did with the repo root on the library path.
+  extra library paths:
+    - .

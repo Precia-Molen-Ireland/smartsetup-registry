@@ -1,0 +1,38 @@
+# TMS Smart Setup definition for FastMM4 (https://github.com/pleriche/FastMM4).
+# Upstream, unmodified. FastMM4 is two units and an options include, used directly from
+# source by the test projects; the generated package just satisfies Smart Setup and gives
+# the units a compile check.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pleriche.fastmm4
+  name: FastMM4
+  description: FastMM4 memory manager with leak detection (Pierre le Riche)
+  url: https://github.com/pleriche/FastMM4
+  vcs protocol: git
+  docs: https://github.com/pleriche/FastMM4
+
+supported frameworks:
+  rtl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+
+packages:
+  - FastMM4: [runtime, rtl]
+
+package definitions:
+  FastMM4:
+    framework type: NONE
+    description: FastMM4 memory manager
+    requires: rtl
+    files:
+      - source:
+          folder: .
+          include file mask: 'FastMM4.pas;FastMM4Messages.pas'
+
+paths:
+  # FastMM4Options.inc lives in the repo root and is included by FastMM4.pas.
+  extra library paths:
+    - .
