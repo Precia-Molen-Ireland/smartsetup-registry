@@ -15,7 +15,6 @@ application:
 supported frameworks:
   fmx:
     ide since: delphi13
-    ide until: delphi13
     platforms:
       - win32intel
       - win64intel
@@ -30,8 +29,10 @@ packages:
 
 package options:
   # All versions' packages sit flat in packages\; the dproj omits iOS but the code is plain FMX.
+  # Note: "delphi13+" makes Smart Setup 2.x fail with "Range check error" while loading the
+  # server (plus-form on the newest IDE it knows), so the mapping is written without the plus.
   package folders:
-    delphi13+: packages
+    delphi13: packages
   ignore dproj platforms: true
 
 paths:
