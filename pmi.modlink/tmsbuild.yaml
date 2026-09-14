@@ -1,0 +1,32 @@
+# TMS Smart Setup definition for ModLink2 (Modbus components, as purchased).
+# Install with:  tms install pmi.modlink   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.modlink
+  name: ModLink2
+  description: ModLink Modbus TCP/RTU client components (purchased, maintained in our private repo)
+  url: https://github.com/Precia-Molen-Ireland/ModLink2.git
+  vcs protocol: git
+  docs: https://github.com/Precia-Molen-Ireland/ModLink2
+
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+
+packages:
+  - modlinkr: [runtime, vcl]
+  - modlinkd: [design, vcl]
+
+package options:
+  # The vendor names package folders after the RAD Studio release rather than d11/d12/d13,
+  # and the dpks have no {$LIBSUFFIX}.
+  root package folder: Packages
+  package folders:
+    delphi11: RadStudioAlexandria
+    delphi12: RadStudioAthens
+    delphi13: RadStudioFlorence
+  add libsuffix: true

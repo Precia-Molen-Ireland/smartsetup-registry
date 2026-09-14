@@ -1,0 +1,34 @@
+# TMS Smart Setup definition for prOpcKit (OPC DA client/server kit).
+# Install with:  tms install pmi.propc   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.propc
+  name: prOpcKit
+  description: prOpcKit OPC DA components and server framework (maintained in our private repo)
+  url: https://github.com/Precia-Molen-Ireland/propc.git
+  vcs protocol: git
+  docs: https://github.com/Precia-Molen-Ireland/propc
+
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+
+# prOpcKit is a single design-time package that also carries the client runtime units.
+packages:
+  - prOpcKit: [design, vcl]
+
+package options:
+  # The package sits in Sources\ alongside the units, not in Packages\d13, and has no {$LIBSUFFIX}.
+  package folders:
+    delphi11+: Sources
+  add libsuffix: true
+
+paths:
+  # The OPC server units (prOpcServer, prOpcClasses, prOpcItems, prOpcRttiServer, prOpcVSC,
+  # prOpcVarUtils, prOpcItemSelect) are not in the package and are compiled from source by
+  # the projects that use them, as the manual install did with Sources on the library path.
+  extra library paths:
+    - Sources
