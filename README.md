@@ -32,5 +32,3 @@ Re-zip after every change to a `tmsbuild.yaml`; Smart Setup reads the zip, not t
 | `pmi.kastri` | https://github.com/DelphiWorlds/Kastri | upstream Kastri, unmodified; community definition plus library paths for Core, FeaturesConnectivity, API, Include |
 | `pmi.modlink` | https://github.com/Precia-Molen-Ireland/ModLink2 | private repo; purchased Modbus components |
 | `pmi.propc` | https://github.com/Precia-Molen-Ireland/propc | private repo; OPC kit, design package plus server units from source |
-| `ethea.svgiconimagelist` | https://github.com/EtheaDev/SVGIconImageList | upstream, unmodified; Windows packages plus Source and Image32\source on the library path on all platforms |
-| `magni.tframestand` | https://github.com/andrea-magni/TFrameStand | upstream, unmodified; Delphi 13 packages, source on the library path |
