@@ -1,0 +1,53 @@
+# TMS Smart Setup definition for SVGIconImageList (https://github.com/EtheaDev/SVGIconImageList).
+# Upstream, unmodified; the repo ships no tmsbuild.yaml so this copy is used.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: ethea.svgiconimagelist
+  name: SVGIconImageList
+  description: SVG icon image lists, image collections and controls for VCL and FMX (Ethea)
+  url: https://github.com/EtheaDev/SVGIconImageList
+  vcs protocol: git
+  docs: https://github.com/EtheaDev/SVGIconImageList
+
+# The vendor packages exist for Windows only. GenMobile uses the FMX controls on Android,
+# iOS and macOS by compiling them from source, so those platforms get the source folders on
+# the library path (see "paths"). Smart Setup only registers paths for platforms it builds
+# something on, which is why the RTL-only RestClient package is also built there.
+supported frameworks:
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+  fmxwin:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+  fmxmobile:
+    ide since: delphi11
+    platforms:
+      - android64
+      - iosdevice64
+      - iossimulator64arm
+      - macos64arm
+
+packages:
+  - SVGImage32Package: [runtime, vcl]
+  - SVGIconImageListRestClient: [runtime, vcl, fmxwin, fmxmobile]
+  - SVGIconImageList: [runtime, vcl]
+  - dclSVGIconImageList: [design, vcl]
+  - SVGIconImageListFMX: [runtime, fmxwin]
+  - dclSVGIconImageListFMX: [design, fmxwin]
+
+package options:
+  # Packages live in Packages\D11, D12, D13 (Smart Setup matches d11/d12/d13 case-insensitively).
+  # The RestClient dproj lists only Win32/Win64; it is RTL-only and builds on every platform.
+  ignore dproj platforms: true
+
+paths:
+  # Same folders the manual install had on the library path on every platform.
+  extra library paths:
+    - Source
+    - Image32\source
