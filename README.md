@@ -19,14 +19,14 @@ points at stay private; Smart Setup clones them with git and your own GitHub log
 `GenMobileMultiTenancy\Build.ps1` registers the server automatically. By hand:
 
 ```
-cd C:\Delphi\Comps	ms
+cd C:\Delphi\Comps\tms
 tms server-add pmi zipfile https://github.com/Precia-Molen-Ireland/smartsetup-registry/archive/refs/heads/main.zip
 tms install gdk.markdown4d
 ```
 
 ## Changing the catalogue
 
-Edit or add a `<product.id>	msbuild.yaml`, commit, push. Smart Setup notices the new zip on
+Edit or add a `<product.id>\tmsbuild.yaml`, commit, push. Smart Setup notices the new zip on
 its next run through GitHub's ETag; there is nothing to rebuild locally.
 
 ## Products
