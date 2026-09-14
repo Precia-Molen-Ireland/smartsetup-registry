@@ -1,7 +1,8 @@
 # TMS Smart Setup definition for FastMM4 (https://github.com/pleriche/FastMM4).
-# Upstream, unmodified. FastMM4 is two units and an options include, used directly from
-# source by the test projects; the generated package just satisfies Smart Setup and gives
-# the units a compile check.
+# Upstream, unmodified. FastMM4.pas must be compiled into the program that uses it (it
+# cannot live in a package: E2201 on Win32), so the projects take it from source via the
+# library path. The generated package holds only FastMM4Messages and exists because Smart
+# Setup requires at least one package per product.
 minimum required tmsbuild version: 2.0
 
 application:
@@ -20,17 +21,17 @@ supported frameworks:
       - win64intel
 
 packages:
-  - FastMM4: [runtime, rtl]
+  - FastMM4Support: [runtime, rtl]
 
 package definitions:
-  FastMM4:
+  FastMM4Support:
     framework type: NONE
-    description: FastMM4 memory manager
+    description: FastMM4 messages unit (FastMM4.pas itself is compiled by the consuming program)
     requires: rtl
     files:
       - source:
           folder: .
-          include file mask: 'FastMM4.pas;FastMM4Messages.pas'
+          include file mask: 'FastMM4Messages.pas'
 
 paths:
   # FastMM4Options.inc lives in the repo root and is included by FastMM4.pas.
