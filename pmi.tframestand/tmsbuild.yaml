@@ -1,0 +1,46 @@
+# TMS Smart Setup definition for TFrameStand, from our fork of
+# https://github.com/andrea-magni/TFrameStand at Precia-Molen-Ireland/TFrameStand.
+# Upstream head cannot build its Delphi 13 packages, so the fork carries two dproj/dpk fixes
+# on top of upstream master and nothing else:
+#   - dclFrameStandPackage_13 requires FrameStandPackage_13, not _11_1 (upstream PR #95)
+#   - FrameStandPackage_13 drops -LUDesignIDE (upstream issue #90) and targets macOS ARM64
+#     and iOS in TargetedPlatforms, which is what Smart Setup reads to pick platforms
+# Merge upstream into the fork when it releases, and drop the fork once it has caught up.
+minimum required tmsbuild version: 2.0
+
+application:
+  id: pmi.tframestand
+  name: TFrameStand
+  description: TFrameStand / TFormStand FMX components for frame and form management (Andrea Magni)
+  url: https://github.com/Precia-Molen-Ireland/TFrameStand.git
+  vcs protocol: git
+  docs: https://github.com/andrea-magni/TFrameStand
+
+# The package names carry the Delphi version (FrameStandPackage_13), so this definition
+# targets Delphi 13 only. Add a delphi14 mapping and rename when the next version ships.
+supported frameworks:
+  fmx:
+    ide since: delphi13
+    ide until: delphi13
+    platforms:
+      - win32intel
+      - win64intel
+      - macos64arm
+      - iosdevice64
+      - iossimulator64arm
+      - android64
+
+packages:
+  - FrameStandPackage_13: [runtime, fmx]
+  - dclFrameStandPackage_13: [design, fmx]
+
+# Not "ignore dproj platforms": the design package's dproj targets Win32 only, and ignoring
+# it makes Smart Setup build the design package for Win64 too, which fails on DesignIDE.
+# "delphi13:" rather than "delphi13+": the + form makes Smart Setup fail to load the server.
+package options:
+  package folders:
+    delphi13: packages
+
+paths:
+  extra library paths:
+    - source

@@ -40,6 +40,7 @@ its next run through GitHub's ETag; there is nothing to rebuild locally.
 | `pmi.modlink` | https://github.com/Precia-Molen-Ireland/ModLink2 | private repo; purchased Modbus components |
 | `pmi.propc` | https://github.com/Precia-Molen-Ireland/propc | private repo; OPC kit, design package plus server units from source |
 | `pmi.sigplus` | https://github.com/Precia-Molen-Ireland/sigplus-delphi | private repo; Topaz SigPlus ActiveX import; run Installer\sigplus.exe once per machine |
+| `pmi.tframestand` | https://github.com/Precia-Molen-Ireland/TFrameStand | our fork of andrea-magni/TFrameStand: upstream plus two Delphi 13 package fixes (PR #95, issue #90); drop the fork once upstream catches up |
 | `vsoft.delphimocks` | https://github.com/VSoftTechnologies/Delphi-Mocks | upstream, unmodified |
 | `grijjy.foundation` | https://github.com/grijjy/GrijjyFoundation | upstream, unmodified; source on the library path, small generated package |
 | `pleriche.fastmm4` | https://github.com/pleriche/FastMM4 | upstream, unmodified; source on the library path, small generated package |
