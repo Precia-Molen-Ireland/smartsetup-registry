@@ -1,4 +1,4 @@
-# TMS Smart Setup definition for the PMI common units repo ("misc").
+# TMS Smart Setup definition for the PMI common units repo ("common", formerly "misc").
 # Install with:  tms install pmi.common   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
 #
 # This repo is mostly source-only units with mixed dependencies (TMS Logging, CodeSite,
@@ -11,9 +11,9 @@ application:
   id: pmi.common
   name: PMI Common Units
   description: Shared Delphi units used across GenWS, GenMobile and other PMI projects (loggers, helpers, JSON adapter)
-  url: https://github.com/Precia-Molen-Ireland/misc.git
+  url: https://github.com/Precia-Molen-Ireland/common.git
   vcs protocol: git
-  docs: https://github.com/Precia-Molen-Ireland/misc
+  docs: https://github.com/Precia-Molen-Ireland/common
 
 # The units are used by GenMobile on every platform it targets, so the library
 # path is registered for all of them. jsonadapt is RTL/dbrtl only and builds anywhere.
