@@ -46,9 +46,11 @@ paths:
     - API
     - Controls
   # Folders GenMobile uses as source: DW.OSDevice, DW.OSPower, DW.MobileDeviceInfo,
-  # DW.Permissions.Helpers, DW.Classes.Helpers, DW.Consts.Android, DW.Connectivity.
+  # DW.Permissions.Helpers, DW.Classes.Helpers, DW.Consts.Android, DW.Connectivity,
+  # DW.ShareItems.
   extra library paths:
     - Core
     - Features\Connectivity
+    - Features\ShareItems
     - API
     - Include
