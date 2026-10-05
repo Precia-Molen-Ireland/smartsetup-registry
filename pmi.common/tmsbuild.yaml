@@ -46,3 +46,5 @@ paths:
   extra library paths:
     - .
     - Logging
+    # The Precia Molen theme: its units link their own resources (PMTheme.res).
+    - Theme
