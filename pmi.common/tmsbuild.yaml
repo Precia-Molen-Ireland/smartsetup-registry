@@ -3,9 +3,10 @@
 #
 # This repo is mostly source-only units with mixed dependencies (TMS Logging, CodeSite,
 # Raize, QuickLogger, FMX). They are compiled by the projects that use them, so their
-# folders are simply registered on the library path (see "paths" below). jsonadapt is the
-# one real package and satisfies Smart Setup's requirement for at least one package per
-# product.
+# folders are simply registered on the library path (see "paths" below). jsonadapt is a
+# real package; so are the PM Theme packages (PMThemeCore, PMThemeVCL, PMThemeFMX and the
+# design packages dclPMThemeVCL / dclPMThemeFMX), which put TPMThemeVCL and TPMThemeFMX on
+# the IDE's palette - the apps still compile the theme units from source.
 minimum required tmsbuild version: 2.0
 
 application:
@@ -31,14 +32,38 @@ supported frameworks:
       - android64
     # Smart Setup only builds win64xintel when this is true.
     c++ builder support: true
+  # The PM Theme components: TPMThemeVCL (Windows only) and TPMThemeFMX (everywhere).
+  vcl:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+      - win64xintel
+    c++ builder support: true
+  fmx:
+    ide since: delphi11
+    platforms:
+      - win32intel
+      - win64intel
+      - win64xintel
+      - macos64arm
+      - iosdevice64
+      - iossimulator64arm
+      - android64
+    c++ builder support: true
 
 packages:
   - jsonadapt: [runtime, rtl]
+  - PMThemeCore: [runtime, rtl]
+  - PMThemeVCL: [runtime, vcl]
+  - PMThemeFMX: [runtime, fmx]
+  - dclPMThemeVCL: [design, vcl]
+  - dclPMThemeFMX: [design, fmx]
 
 package options:
-  # jsonadapt.dpk has no {$LIBSUFFIX}; Smart Setup adds one at build time.
+  # The packages have no {$LIBSUFFIX}; Smart Setup adds one at build time.
   add libsuffix: true
-  # jsonadapt.dproj only lists Win32; build it for every platform above anyway.
+  # The .dproj files list only Win32; build them for every platform above anyway.
   ignore dproj platforms: true
 
 paths:
