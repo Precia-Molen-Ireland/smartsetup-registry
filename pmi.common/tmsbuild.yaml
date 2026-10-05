@@ -2,15 +2,16 @@
 # Install with:  tms install pmi.common   (server "pmi", see Precia-Molen-Ireland/smartsetup-registry)
 #
 # This repo is mostly source-only units with mixed dependencies (TMS Logging, CodeSite,
-# Raize, QuickLogger, FMX). They are compiled by the projects that use them, so the whole
-# repo is simply registered on the library path. jsonadapt is the one real package and
-# satisfies Smart Setup's requirement for at least one package per product.
+# Raize, QuickLogger, FMX). They are compiled by the projects that use them, so their
+# folders are simply registered on the library path (see "paths" below). jsonadapt is the
+# one real package and satisfies Smart Setup's requirement for at least one package per
+# product.
 minimum required tmsbuild version: 2.0
 
 application:
   id: pmi.common
   name: PMI Common Units
-  description: Shared Delphi units used across GenWS, GenMobile and other PMI projects (loggers, helpers, JSON adapter)
+  description: Shared Delphi units used across GenWS, GenMobile and other PMI projects (loggers, helpers, JSON adapter, the PM Light / PM Dark theme)
   url: https://github.com/Precia-Molen-Ireland/common.git
   vcs protocol: git
   docs: https://github.com/Precia-Molen-Ireland/common
@@ -41,8 +42,9 @@ package options:
   ignore dproj platforms: true
 
 paths:
-  # Everything else is consumed as source, exactly as the manual install did with
-  # C:\Delphi\Comps\misc and C:\Delphi\Comps\misc\Logging on the library path.
+  # Everything else is consumed as source. These folders are relative to the repo root,
+  # which Smart Setup checks out to <tms products folder>\pmi.common\src - here,
+  # C:\Delphi\Comps\tms\Products\pmi.common\src.
   extra library paths:
     - .
     - Logging
