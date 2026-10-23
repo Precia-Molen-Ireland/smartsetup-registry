@@ -47,9 +47,13 @@ paths:
     - Controls
   # Folders GenMobile uses as source: DW.OSDevice, DW.OSPower, DW.MobileDeviceInfo,
   # DW.Permissions.Helpers, DW.Classes.Helpers, DW.Consts.Android, DW.Connectivity,
-  # DW.ShareItems.
+  # DW.ShareItems, DW.Biometric.
+  # A feature folder holds only its own units - everything Biometric leans on
+  # (DW.Androidapi.JNI.AndroidX.Biometric and the other JNI imports, DW.OSLog,
+  # DW.MultiReceiver.Android, DW.Macapi.Helpers) is already in API and Core.
   extra library paths:
     - Core
+    - Features\Biometric
     - Features\Connectivity
     - Features\ShareItems
     - API
